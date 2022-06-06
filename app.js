@@ -9,7 +9,14 @@ app.get("/", function (req, res) {
   var today = new Date();
   var currentDay = today.getDay();
   var day = "";
-
+  var options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  var today = new Date();
+  var todayFormat = today.toLocaleDateString("de-DE", options);
   // Logic with IF
   /*
   if (currentDay === 0) {
@@ -31,7 +38,7 @@ app.get("/", function (req, res) {
   }
 */
 
-  // Logic with Switch
+  /*  // Logic with Switch
 
   switch (currentDay) {
     case 0:
@@ -57,8 +64,8 @@ app.get("/", function (req, res) {
       break;
     default:
       console.log("Error currentDay equals to: " + currentDay);
-  }
-  res.render("list", { kindOfDay: day });
+  } */
+  res.render("list", { kindOfDay: todayFormat });
 });
 
 app.listen(3000, function () {
